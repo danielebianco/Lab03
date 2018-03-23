@@ -35,12 +35,12 @@ public class Dictionary {
 	}
 	public List<RichWord> spellCheckText(List<String> inputTextList) {
 		for(String s : inputTextList) {
-			if(s!=null && !dizionarioCorrente.contains(s)) {
-				rw.add(new RichWord(s, false));
-				werr.add(s);
-			}
-			else
-				rw.add(new RichWord(s, true));
+				if(!dizionarioCorrente.contains(s)) {
+					rw.add(new RichWord(s, false));
+					werr.add(s);
+				}
+				else
+					rw.add(new RichWord(s, true));
 			errori++;
 			time = System.nanoTime();
 		} 

@@ -66,6 +66,12 @@ public class SpellCheckerController {
     		model.setDizionarioCorrente(model.getDizionarioInglese());
     	
     	String parola = txtCheck.getText().toLowerCase().replaceAll("[.,\\/#!?$%\\^&\\*;:{}=\\-_`~()\\[\\]]", "" );
+    	
+    	if(parola.length()==0) {
+    		txtCanc.appendText("Devi inserire un testo!\n");
+    		return;
+    	}
+    	
     	String[] parolaDaControllare = parola.split(" ");
     	for(int i=0; i<parolaDaControllare.length; i++) {
     		parole.add(parolaDaControllare[i]);
