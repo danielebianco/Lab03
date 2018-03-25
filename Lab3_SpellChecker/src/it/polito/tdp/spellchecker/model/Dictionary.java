@@ -31,19 +31,19 @@ public class Dictionary {
 			} catch (IOException e){
 			System.out.println("Errore nella lettura del file");
 			}
-		
 	}
+	
 	public List<RichWord> spellCheckText(List<String> inputTextList) {
 		for(String s : inputTextList) {
-				if(!dizionarioCorrente.contains(s)) {
-					rw.add(new RichWord(s, false));
-					werr.add(s);
-				}
-				else
-					rw.add(new RichWord(s, true));
-			errori++;
-			time = System.nanoTime();
-		} 
+			if(!dizionarioCorrente.contains(s)) {
+				rw.add(new RichWord(s, false));
+				werr.add(s);
+				errori++;
+			}
+			else
+				rw.add(new RichWord(s, true));
+		}
+		time = System.nanoTime();
 		return rw;
 	}
 	
