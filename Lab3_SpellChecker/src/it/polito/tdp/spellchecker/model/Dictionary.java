@@ -5,13 +5,15 @@ import java.util.*;
 
 public class Dictionary {
 	
-	List<String> dizionarioItaliano = new LinkedList<String>();	
-	List<String> dizionarioInglese = new LinkedList<String>();
+	List<String> dizionarioItaliano = new ArrayList<String>();	
+	List<String> dizionarioInglese = new ArrayList<String>();
 	List<String> dizionarioCorrente;
 	List<RichWord> rw = new LinkedList<RichWord>();
 	List<String> werr = new LinkedList<String>();
 	int errori = 0;
 	long time = 0;
+	boolean trovato = false;
+	int contatore = 0;
 	
 	public void loadAll() {
 		loadDictionary(dizionarioItaliano, "Italian");
@@ -30,20 +32,37 @@ public class Dictionary {
 			br.close();
 			} catch (IOException e){
 			System.out.println("Errore nella lettura del file");
-			}
-		
+			}	
 	}
-	public List<RichWord> spellCheckText(List<String> inputTextList) {
+		
+	public List<RichWord> spellCheckTextLinear(List<String> inputTextList) {
 		for(String s : inputTextList) {
-				if(!dizionarioCorrente.contains(s)) {
+			for(int i=0; i<dizionarioCorrente.size();i++) {
+				if(dizionarioCorrente.get(i).compareTo(s)!=0 && i==dizionarioCorrente.size()) {
 					rw.add(new RichWord(s, false));
 					werr.add(s);
 				}
 				else
 					rw.add(new RichWord(s, true));
+			}
 			errori++;
 			time = System.nanoTime();
-		} 
+		}
+		return rw;
+	}
+	
+	public List<RichWord> spellCheckTextDicotomic(List<String> inputTextList) {
+		for(String s : inputTextList) {			
+			if(!dizionarioCorrente.contains(s)) {
+				rw.add(new RichWord(s, false));
+				werr.add(s);
+			}
+			else
+				rw.add(new RichWord(s, true));
+			
+		}
+		errori++;
+		time = System.nanoTime();
 		return rw;
 	}
 	
