@@ -76,11 +76,12 @@ public class SpellCheckerController {
     	for(int i=0; i<parolaDaControllare.length; i++) {
     		parole.add(parolaDaControllare[i]);
     	}
-    	
+    	long l1 = System.nanoTime();
     	model.spellCheckText(parole);
+    	long l2 = System.nanoTime();
     	txtCanc.setText(model.stampaString(model.getWerr()));
     	redText.setText("The text contains " + model.getErrori() + " errors");
-    	blackText.setText("Spell check completed in " + model.getTime() + " seconds");
+    	blackText.setText("Spell check completed in " + (l2-l1)/1E9 + " seconds");
     	model.resetList(parole);
     	model.setErrori(0);
     	}

@@ -11,7 +11,6 @@ public class Dictionary {
 	List<RichWord> rw = new LinkedList<RichWord>();
 	List<String> werr = new LinkedList<String>();
 	int errori = 0;
-	long time = 0;
 	
 	public void loadAll() {
 		loadDictionary(dizionarioItaliano, "Italian");
@@ -43,7 +42,6 @@ public class Dictionary {
 			else
 				rw.add(new RichWord(s, true));
 		}
-		time = System.nanoTime();
 		return rw;
 	}
 	
@@ -85,10 +83,6 @@ public class Dictionary {
 	
 	public int getErrori() {
 		return errori;
-	}
-
-	public long getTime() {
-		return time;
 	}
 
 	public List<RichWord> getRw() {
