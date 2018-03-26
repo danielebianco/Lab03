@@ -77,7 +77,7 @@ public class SpellCheckerController {
     		parole.add(parolaDaControllare[i]);
     	}
     	
-    	model.spellCheckTextDicotomic(parole);
+    	model.spellCheckTextLinear(parole);
     	txtCanc.setText(model.stampaString(model.getWerr()));
     	redText.setText("The text contains " + model.getErrori() + " errors");
     	blackText.setText("Spell check completed in " + model.getTime() + " seconds");
