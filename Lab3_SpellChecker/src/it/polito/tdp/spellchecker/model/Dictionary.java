@@ -11,9 +11,7 @@ public class Dictionary {
 	List<RichWord> rw = new LinkedList<RichWord>();
 	List<String> werr = new LinkedList<String>();
 	int errori = 0;
-	long time = 0;
 	final static boolean dicotomica = false;
-	int contatore = 0;
 	
 	public void loadAll() {
 		loadDictionary(dizionarioItaliano, "Italian");
@@ -29,7 +27,7 @@ public class Dictionary {
 			while ((word = br.readLine()) != null) {
 				dic.add(word.toLowerCase()); // Aggiungere parola alla struttura dati
 			}
-			Collections.sort(dizionarioCorrente);
+			//Collections.sort(dizionarioCorrente);
 			br.close();
 			} catch (IOException e){
 			System.out.println("Errore nella lettura del file");
@@ -61,7 +59,6 @@ public class Dictionary {
 				rw.add(r);
 			}
 		}
-		time = System.nanoTime();
 		return rw;
 	}
 	
@@ -126,10 +123,6 @@ public class Dictionary {
 	
 	public int getErrori() {
 		return errori;
-	}
-
-	public long getTime() {
-		return time;
 	}
 
 	public List<RichWord> getRw() {
