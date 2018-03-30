@@ -62,7 +62,7 @@ public class SpellCheckerController {
     	
     	if(language.getValue().compareTo("Italian")==0)
     		model.setDizionarioCorrente(model.getDizionarioItaliano());
-    	else if(language.getValue().compareTo("English")==0)
+    	if(language.getValue().compareTo("English")==0)
     		model.setDizionarioCorrente(model.getDizionarioInglese());
     	
     	String parola = txtCheck.getText().toLowerCase().replaceAll("[.,\\/#!?$%\\^&\\*;:{}=\\-_`~()\\[\\]]", "" );
